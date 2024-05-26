@@ -6,7 +6,7 @@ import Header from "@/components/shared/Header";
 import { Button } from "@/components/ui/button";
 import { plans } from "@/constants";
 import { getUserById } from "@/lib/actions/user.actions";
-import Checkout from "@/components/shared/Checkout";
+
 
 const Credits = async () => {
   const { userId } = auth();
@@ -43,9 +43,8 @@ const Credits = async () => {
                     className="flex items-center gap-4"
                   >
                     <Image
-                      src={`/assets/icons/${
-                        inclusion.isIncluded ? "check.svg" : "cross.svg"
-                      }`}
+                      src={`/assets/icons/${inclusion.isIncluded ? "check.svg" : "cross.svg"
+                        }`}
                       alt="check"
                       width={24}
                       height={24}
@@ -61,12 +60,12 @@ const Credits = async () => {
                 </Button>
               ) : (
                 <SignedIn>
-                  <Checkout
+                  {/* <Checkout
                     plan={plan.name}
                     amount={plan.price}
                     credits={plan.credits}
                     buyerId={user._id}
-                  />
+                  /> */}
                 </SignedIn>
               )}
             </li>
