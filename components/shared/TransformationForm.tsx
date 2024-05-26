@@ -44,7 +44,7 @@ export const formSchema = z.object({
     publicId: z.string(),
 })
 
-const TransformationForm = ({ action, data = null, userId, type, creditBalance, config = null }: TransformationFormProps) => {
+const TransformationForm = ({ action, data = null, type, config = null }: TransformationFormProps) => {
 
     const transformationType = transformationTypes[type];
 
@@ -96,43 +96,43 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                 color: values.color,
             }
 
-            if (action === 'Add') {
-                try {
-                    const newImage = await addImage({
-                        image: imageData,
-                        userId,
-                        path: '/'
-                    })
+            // if (action === 'Add') {
+            //     try {
+            //         const newImage = await addImage({
+            //             image: imageData,
+            //             userId,
+            //             path: '/'
+            //         })
 
-                    if (newImage) {
-                        form.reset()
-                        setImage(data)
-                        router.push(`/transformations/${newImage._id}`)
-                    }
+            //         if (newImage) {
+            //             form.reset()
+            //             setImage(data)
+            //             router.push(`/transformations/${newImage._id}`)
+            //         }
 
-                } catch (error) {
-                    console.log(error)
-                }
-            }
+            //     } catch (error) {
+            //         console.log(error)
+            //     }
+            // }
 
-            if (action === 'Update') {
-                try {
-                    const updatedImage = await updateImage({
-                        image: {
-                            ...imageData,
-                            _id: data._id
-                        },
-                        userId,
-                        path: `/transformations/${data._id}`
-                    })
+            // if (action === 'Update') {
+            //     try {
+            //         const updatedImage = await updateImage({
+            //             image: {
+            //                 ...imageData,
+            //                 _id: data._id
+            //             },
+            //             userId,
+            //             path: `/transformations/${data._id}`
+            //         })
 
-                    if (updatedImage) {
-                        router.push(`/transformations/${updatedImage._id}`)
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
-            }
+            //         if (updatedImage) {
+            //             router.push(`/transformations/${updatedImage._id}`)
+            //         }
+            //     } catch (error) {
+            //         console.log(error);
+            //     }
+            // }
 
         }
 
@@ -192,7 +192,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
+                {/* {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />} */}
                 <CustomField
                     control={form.control}
                     name="title"
